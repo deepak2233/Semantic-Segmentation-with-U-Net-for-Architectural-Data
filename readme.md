@@ -13,7 +13,7 @@ git clone https://github.com/deepak2233/vertliner_assignment.git
 Next, navigate to the project directory:
 
 ```
-cd semantic-segmentation
+cd vertliner_assignment
 ```
 
 Install the required dependencies by running the following command:
