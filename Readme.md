@@ -1,6 +1,6 @@
-# Semantic Segmentation
+# Vertliner Semantic Segmentation Assignment
 
-This repository contains code for performing semantic segmentation using a U-Net model. The U-Net model is a popular architecture for image segmentation tasks and has been widely used in various domains, including medical imaging and remote sensing.
+This repository contains code for performing semantic segmentation using a U-Net model. The U-Net model is a popular architecture for image segmentation tasks and has been widely used in Segmentation domains
 
 ## Installation
 
