@@ -7,7 +7,7 @@ This repository contains code for performing semantic segmentation using a U-Net
 To use this code, you need to have Python 3.6.10 installed on your system. You can clone this repository using the following command:
 
 ```
-[git clone https://github.com/your-username/semantic-segmentation.git](https://github.com/deepak2233/vertliner_assignment.git)
+git clone https://github.com/deepak2233/vertliner_assignment.git
 ```
 
 Next, navigate to the project directory:
@@ -101,6 +101,13 @@ The script will train the model on the provided dataset and save the trained mod
 
 - `--l2_regularization`: L2 regularization. (Default: 0.01)
 
+
+---
+After training the model, you can use it for inference on new images. The script `inference.py` provides an example of how to use the trained model for semantic segmentation. You can run the script with the following command:
+
+`python infer.py --image_path os.getcwd()+'Semantic-segmentation-dataset/Semantic segmentation dataset/tile1/images/    image001.jpg --model os.getcwd()+'unet_model1.h5' --output_path path/to/output.png'
+
+---
 ## Model Architecture
 
 The U-Net model used in this code is defined in the `unet_model.py` file. There are two versions of the model available:
