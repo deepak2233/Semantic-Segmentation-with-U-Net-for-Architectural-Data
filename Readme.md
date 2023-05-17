@@ -4,10 +4,10 @@ This repository contains code for performing semantic segmentation using a U-Net
 
 ## Installation
 
-To use this code, you need to have Python 3.x installed on your system. You can clone this repository using the following command:
+To use this code, you need to have Python 3.6.10 installed on your system. You can clone this repository using the following command:
 
 ```
-git clone https://github.com/your-username/semantic-segmentation.git
+[git clone https://github.com/your-username/semantic-segmentation.git](https://github.com/deepak2233/vertliner_assignment.git)
 ```
 
 Next, navigate to the project directory:
@@ -22,15 +22,7 @@ Install the required dependencies by running the following command:
 pip install -r requirements.txt
 ```
 
-      ```
-      argparse==1.4.0
-      natsort==7.1.1
-      numpy==1.21.0
-      tensorflow==2.6.0
-      scikit-learn==0.24.2
-      imbalanced-learn==0.8.1
-      matplotlib==3.4.2
-      ```
+---
 
 ## Dataset
 
@@ -41,21 +33,21 @@ Semantic-segmentation-dataset/
   Semantic segmentation dataset/
     tile1/
       images/
-        image1.jpg
-        image2.jpg
+        image001.jpg
+        image002.jpg
         ...
       masks/
-        image1.png
-        image2.png
+        image001.png
+        image002.png
         ...
     tile2/
       images/
-        image1.jpg
-        image2.jpg
+        image001.jpg
+        image002.jpg
         ...
       masks/
-        image1.png
-        image2.png
+        image001.png
+        image002.png
         ...
     ...
 ```
@@ -67,22 +59,47 @@ You can change the dataset directory by modifying the `dataset_dir` variable in 
 The main script for training the U-Net model is `train.py`. You can run the script with the following command:
 
 ```
-python train.py --batch_size 32 --epochs 50
+python3 main.py --dataset_dir Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2
 ```
 
 The `batch_size` argument specifies the batch size for training, and the `epochs` argument specifies the number of training epochs.
 
 The script will train the model on the provided dataset and save the trained model weights to a file named `model.h5`.
 
-## Results
 
-After training the model, you can use it for inference on new images. The script `infer.py` provides an example of how to use the trained model for semantic segmentation. You can run the script with the following command:
+## Command-line Arguments
 
-```
-python infer.py --image_path path/to/image.jpg --model_path path/to/model.h5 --output_path path/to/output.png
-```
+- `--dataset_dir` (required): Path to the dataset directory.
 
-The `image_path` argument specifies the path to the input image, the `model_path` argument specifies the path to the trained model weights file, and the `output_path` argument specifies the path to save the output segmentation mask.
+- `--model`: Choose the UNet model to use. Available options: "unet_model1", "unet_model2". (Default: "unet_model1")
+
+- `--image_height`: Image height. (Default: 256)
+
+- `--image_width`: Image width. (Default: 256)
+
+- `--test_size`: Proportion of the dataset to use as validation. (Default: 0.2)
+
+- `--random_state`: Random state for dataset shuffling. (Default: 42)
+
+- `--batch_size`: Batch size. (Default: 8)
+
+- `--epochs`: Number of epochs. (Default: 50)
+
+- `--learning_rate`: Learning rate. (Default: 0.0001)
+
+- `--data_augmentation`: Apply data augmentation. (Flag, no value required)
+
+- `--class_weighting`: Apply class weighting. (Flag, no value required)
+
+- `--oversampling`: Apply oversampling. (Flag, no value required)
+
+- `--undersampling`: Apply undersampling. (Flag, no value required)
+
+- `--dropout_rate`: Dropout rate. (Default: 0.2)
+
+- `--l1_regularization`: L1 regularization. (Default: 0.01)
+
+- `--l2_regularization`: L2 regularization. (Default: 0.01)
 
 ## Model Architecture
 
