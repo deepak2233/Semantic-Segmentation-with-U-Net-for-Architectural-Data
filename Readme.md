@@ -22,14 +22,15 @@ Install the required dependencies by running the following command:
 pip install -r requirements.txt
 ```
 
-argparse==1.4.0
-natsort==7.1.1
-numpy==1.21.0
-tensorflow==2.6.0
-scikit-learn==0.24.2
-imbalanced-learn==0.8.1
-matplotlib==3.4.2
-
+      ```
+      argparse==1.4.0
+      natsort==7.1.1
+      numpy==1.21.0
+      tensorflow==2.6.0
+      scikit-learn==0.24.2
+      imbalanced-learn==0.8.1
+      matplotlib==3.4.2
+      ```
 
 ## Dataset
 
