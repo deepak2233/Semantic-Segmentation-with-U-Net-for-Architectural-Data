@@ -29,7 +29,7 @@ pip install -r requirements.txt
 The code assumes that you have a dataset of images and their corresponding masks. The images should be in JPEG format, and the masks should be in PNG format. The directory structure should be as follows:
 
 ```
-Semantic-segmentation-dataset/
+data/Semantic-segmentation-dataset/
   Semantic segmentation dataset/
     tile1/
       images/
@@ -59,7 +59,7 @@ You can change the dataset directory by modifying the `dataset_dir` variable in 
 The main script for training the U-Net model is `train.py`. You can run the script with the following command:
 
 ```
-python3 main.py --dataset_dir Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2
+python3 main.py --dataset_dir data/Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2
 ```
 
 ## To Trace Output Log
@@ -67,7 +67,7 @@ python3 main.py --dataset_dir Semantic-segmentation-dataset/Semantic\ segmentati
 In order to trace and save run history use git log command to save the log
 
 ```
-python3 main.py --dataset_dir Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2>output.log
+python3 main.py --dataset_dir data/Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2>output.log
 ```
 
 
