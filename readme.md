@@ -56,7 +56,7 @@ You can change the dataset directory by modifying the `dataset_dir` variable in 
 
 ## Usage
 
-The main script for training the U-Net model is `train.py`. You can run the script with the following command:
+The main script for training the U-Net model is `main.py`. You can run the script with the following command:
 
 ```
 python3 main.py --dataset_dir data/Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2
