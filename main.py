@@ -275,6 +275,14 @@ def train_model(model, train_dataset, epochs):
     # plt.legend()
     # plt.show()
     
+
+save_dir =  os.path.join(os.getcwd()+'unet_model1.h5')
+   
+def save_model(model, save_dir):
+    model.save(save_dir)
+    print(f"Model saved to {save_dir}")
+    
+    
 def evaluate_model(model, test_dataset):
     loss, accuracy = model.evaluate(test_dataset)
     return loss, accuracy
@@ -342,7 +350,7 @@ def main(args):
     train_dataset = create_dataset(image_paths_train, mask_paths_train, args.batch_size)
     test_dataset = create_dataset(image_paths_test, mask_paths_test, args.batch_size)
 
-    print("Toatal Train-Test image size", len(train_dataset),len(test_dataset))
+    #print("Toatal Train-Test image size", len(train_dataset),len(test_dataset))
     
     print()
     print("######## Apply data augmentation")
@@ -386,7 +394,10 @@ def main(args):
     print("######## Train the model")
      # # Train the model
     train_model(model, train_dataset, epochs=args.epochs)
-
+    print()
+    save_dir =  os.path.join(os.getcwd()+'/unet_model1.h5')
+    save_model(model, save_dir)
+    
     print("######## Evaluate the model")
     # Evaluate the model
     loss, accuracy = evaluate_model(model, test_dataset)
