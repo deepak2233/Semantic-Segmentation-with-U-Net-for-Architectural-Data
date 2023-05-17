@@ -62,6 +62,15 @@ The main script for training the U-Net model is `train.py`. You can run the scri
 python3 main.py --dataset_dir Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2
 ```
 
+## To Trace Output Log
+
+In order to trace and save run history use git log command to save the log
+
+```
+python3 main.py --dataset_dir Semantic-segmentation-dataset/Semantic\ segmentation\ dataset/ --model unet_model1 --epochs 5 --test_size 0.2>output.log
+```
+
+
 The `batch_size` argument specifies the batch size for training, and the `epochs` argument specifies the number of training epochs.
 
 The script will train the model on the provided dataset and save the trained model weights to a file named `model.h5`.
