@@ -105,7 +105,9 @@ The script will train the model on the provided dataset and save the trained mod
 ---
 After training the model, you can use it for inference on new images. The script `inference.py` provides an example of how to use the trained model for semantic segmentation. You can run the script with the following command:
 
-`python infer.py --image_path os.getcwd()+'Semantic-segmentation-dataset/Semantic segmentation dataset/tile1/images/    image001.jpg --model os.getcwd()+'unet_model1.h5' --output_path path/to/output.png'
+```
+python infer.py --image_path os.getcwd()+'Semantic-segmentation-dataset/Semantic segmentation dataset/tile1/images/    image001.jpg --model os.getcwd()+'unet_model1.h5' --output_path path/to/output.png'
+```
 
 ---
 ## Model Architecture
