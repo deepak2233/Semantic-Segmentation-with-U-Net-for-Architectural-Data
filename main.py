@@ -19,7 +19,7 @@ import matplotlib.colors as mcolors
 # Constants
 IMAGE_SIZE = (256, 256)
 NUM_CLASSES = 6  # Including the "Unlabeled" class
-classes_file = os.path.join(os.getcwd(), 'data\Semantic-segmentation-dataset\Semantic segmentation dataset\classes.json')
+classes_file = os.path.join(os.getcwd(), 'data','Semantic-segmentation-dataset','Semantic segmentation dataset','classes.json')
 def load_data(dataset_dir):
     image_paths = []
     mask_paths = []
