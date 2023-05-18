@@ -19,7 +19,7 @@ cd vertliner_assignment
 Install the required dependencies by running the following command:
 
 ```
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 ---
