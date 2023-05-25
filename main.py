@@ -353,36 +353,42 @@ def main(args):
     #print("Toatal Train-Test image size", len(train_dataset),len(test_dataset))
     
     print()
-    print("######## Apply data augmentation")
+    
     # Apply data augmentation if enabled
     if args.data_augmentation:
+        print("######## Apply data augmentation")
         train_dataset = apply_data_augmentation(train_dataset)
         print("Toatal train data augmentation image size", len(train_dataset))
     
     print()
-    print("######## Apply class weighting")    # Apply class weighting if enabled
-    print()
+       # Apply class weighting if enabled
+
     if args.class_weighting:
+        print("######## Apply class weighting") 
         train_dataset = apply_class_weighting(train_dataset)
         print("Toatal train class weighting image size", len(train_dataset))
         
 
-    print("######## Apply oversampling")
+    print()
     # Apply oversampling if enabled
     if args.oversampling:
+        print("######## Apply oversampling")
         train_dataset = apply_oversampling(train_dataset)
 
-    print("######## Apply undersampling")
+    print()
     # Apply undersampling if enabled
     if args.undersampling:
+        print("######## Apply undersampling")
         train_dataset = apply_undersampling(train_dataset)
 
     # Create and compile the model
-    print("######## compile the model")
     
+    print()
     if args.model == "unet_model1":
+        print("######## compile the model")
         model = unet_model1((args.image_height, args.image_width, 3), NUM_CLASSES, args.dropout_rate)
     elif args.model == "unet_model2":
+        print("######## compile the model")
         model = unet_model2((args.image_height, args.image_width, 3), NUM_CLASSES, args.dropout_rate,
                        args.l1_regularization, args.l2_regularization)
     else:
@@ -391,6 +397,7 @@ def main(args):
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=args.learning_rate),
                   loss="categorical_crossentropy", metrics=["accuracy"])
 
+    print()
     print("######## Train the model")
      # # Train the model
     train_model(model, train_dataset, epochs=args.epochs)
