@@ -7,13 +7,13 @@ This repository contains code for performing semantic segmentation using a U-Net
 To use this code, you need to have Python 3.6.10 installed on your system. You can clone this repository using the following command:
 
 ```
-git clone https://github.com/deepak2233/vertliner_assignment.git
+git clone https://github.com/deepak2233/vertliner.git
 ```
 
 Next, navigate to the project directory:
 
 ```
-cd vertliner_assignment
+cd vertliner
 ```
 
 Install the required dependencies by running the following command:
