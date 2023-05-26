@@ -59,10 +59,61 @@ def main():
     parser.add_argument('image_path', type=str, help='Path to the input image')
     parser.add_argument('model_dir', type=str, help='Path to the saved model directory')
     args = parser.parse_args()
+    
+   
+    
+    image_paths, mask_paths = load_data(args.dataset_dir)
+    
+    print()
+    print("Toatal image size", len(image_paths),len(mask_paths))
 
-    # Load model
-    model = load_model(args.model_dir)
+    print("######## Split dataset into training and test sets")
+    # Split dataset into training and test sets
+    image_paths_train, image_paths_test, mask_paths_train, mask_paths_test = train_test_split(
+        image_paths, mask_paths, test_size=args.test_size, random_state=args.random_state
+    )
+    print()
+    print("######## Create TensorFlow Datasets")
+    # Create TensorFlow Datasets
+    train_dataset = create_dataset(image_paths_train, mask_paths_train, args.batch_size)
+    test_dataset = create_dataset(image_paths_test, mask_paths_test, args.batch_size)
 
+    # Load the trained model
+    
+    model = tf.keras.models.load_model(arg.model_dir)
+
+    # Evaluate the model on the test dataset
+    loss = model.evaluate(test_dataset)
+
+    # Initialize the confusion matrix
+    num_classes = NUM_CLASSES  # Including the "Unlabeled" class
+    confusion = np.zeros((num_classes, num_classes), dtype=np.int32)
+
+    # Iterate over the test dataset and compute IoU
+    for image, true_mask in test_dataset:
+        # Predict the mask using the trained model
+        pred_mask = model.predict(image)
+        pred_mask = tf.argmax(pred_mask, axis=-1)
+
+        # Flatten the masks for computing confusion matrix
+        true_mask = tf.reshape(true_mask, [-1])
+        pred_mask = tf.reshape(pred_mask, [-1])
+
+        # Update the confusion matrix
+        confusion += confusion_matrix(true_mask, pred_mask, labels=np.arange(num_classes))
+
+    # Compute the IoU matrix
+    intersection = np.diag(confusion)
+    union = np.sum(confusion, axis=0) + np.sum(confusion, axis=1) - intersection
+    iou = intersection / np.maximum(union, 1)  # Add epsilon to avoid division by zero
+
+    # Print the IoU matrix
+    print("IoU matrix:")
+    for i in range(num_classes):
+        print(f"Class {i}: {iou[i]}")
+    
+
+    print("#### Inference on the image")
     # Load image
     img = load_image(args.image_path)
 
